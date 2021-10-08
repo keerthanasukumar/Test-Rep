@@ -1,0 +1,65 @@
+<template>
+    <lightning-card>
+      <lightning-layout>
+        <lightning-layout-item  class="slds-var-p-around_x-small slds-large-size_6-of-12">
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="FirstName" label=" Frist Name"></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="LastName" label=" Last Name"></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="Alias" label="Alias"></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="Email" label="Email"></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="Username" label="Username"></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" onchange={handleChange} type="text" name="CommunityNickname" label="Nickname"></lightning-input>
+        <div class="slds-p-top_medium slds-p-left_x-small">  
+            <c-lwc-lookup lookup-label="Role" name ="Role" object-api-name="UserRole" icon-name="standard:UserRole"  
+              onrecordselection={onAccountSelection}></c-lwc-lookup>  
+        </div>  
+          
+          <div class="slds-p-top_medium slds-p-left_x-small">  
+            <c-lwc-lookup lookup-label="Profile" object-api-name="Profile" name="Profile" icon-name="standard:Profile"  
+              onrecordselection={onAccountSelection}></c-lwc-lookup>  
+        </div>  
+        <template if:true={userTypePicklist}>
+            <lightning-combobox name="UserType" class="slds-p-top_medium slds-p-left_x-small"
+                                label="User License"
+                                value={userRec.UserType}
+                                placeholder="-Select-"
+                                options={usertype}
+                                onchange={handleChange} >
+            </lightning-combobox>
+            <lightning-combobox name="EmailEncodingKey" class="slds-p-top_medium slds-p-left_x-small"
+                                label="Email Encoding"
+                                value={userRec.EmailEncodingKey}
+                                placeholder="-Select-"
+                                options={EmailEncodingKey}
+                                onchange={handleChange} >
+            </lightning-combobox>
+            <lightning-combobox name="TimeZoneSidKey" class="slds-p-top_medium slds-p-left_x-small"
+                                label="Time Zone"
+                                value={userRec.TimeZoneSidKey}
+                                placeholder="-Select-"
+                                options={TimeZoneSidKey}
+                                onchange={handleChange} >
+        </lightning-combobox>
+        <lightning-combobox name="LocaleSidKey" class="slds-p-top_medium slds-p-left_x-small"
+                            label="Locale"
+                            value={userRec.LocaleSidKey}
+                            placeholder="-Select-"
+                            options={LocaleSidKey}
+                        onchange={handleChange} >
+        </lightning-combobox>
+    
+    <lightning-combobox name="LanguageLocaleKey" class="slds-p-top_medium slds-p-left_x-small"
+                        label="Language"
+                        value={userRec.LanguageLocaleKey}
+                        placeholder="-Select-"
+                        options={LanguageLocaleKey}
+                        onchange={handleChange} >
+    </lightning-combobox>
+    </template><br/>
+    <div class="slds-align_absolute-center">
+      <lightning-button label="save" title="save" onclick={handleSave} class= "slds-var-p-around_x-small"></lightning-button>
+      <lightning-button label="cancel" title="cancel" onclick={cancel} class= "slds-var-p-around_x-small"></lightning-button>
+  </div>
+  </lightning-layout-item>
+  </lightning-layout>
+</lightning-card>
+</template>

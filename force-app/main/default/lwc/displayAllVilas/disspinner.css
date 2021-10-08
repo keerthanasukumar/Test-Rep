@@ -1,0 +1,7 @@
+.spinner{
+    position: relative;
+   display: inline-block;
+   width: 51px;
+   vertical-align: middle;
+   white-space: nowrap;
+}

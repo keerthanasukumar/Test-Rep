@@ -1,0 +1,13 @@
+<template>
+    <lightning-layout multiple-rows="true" pull-to-boundary="small">
+        <template if:true={villa} key={vi.Id} for:each={villa} for:item="vi" for:index="index">               
+            <lightning-layout-item key={vi.Id}  class="slds-var-p-around_x-small slds-large-size_6-of-12">              
+             
+                <c-villataile villa={vi} villa-index={vi.Id} selected-villa-id={selectedVilla}  ontileclick={handleSelectedVilla} ></c-villataile>
+            </lightning-layout-item>
+        </template>
+        <!--template if:true={selectedVilla}>
+            <c-display-selectedvilla selected-villa={selectedVilla}></c-display-selectedvilla>
+        </template-->
+    </lightning-layout>
+</template>

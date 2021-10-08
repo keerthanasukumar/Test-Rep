@@ -1,0 +1,51 @@
+<aura:component controller="AccountDetailController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="recordData" type="Account" 
+                    default = "{'sobjectType' :' Account','Name': '','AccountNumber' : '', 'Site' : '', 'Website' : '', 'Phone' :'',}"/>
+    <aura:attribute name="isNormal" type="boolean"/>
+    <aura:attribute name="isSpecial" type="boolean"/>
+    <aura:attribute name="isEditable" type="boolean"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card  class="slds-text-heading_small slds-card_boundary"  variant="base"  title="Account Details">
+        <aura:set attribute="actions">
+            <lightning:button class="{! v.isEditable == true ? 'slds-hide' : 'slds-show slds-float_right'}" label="Edit" onclick="{!c.editRecords}"/>
+        </aura:set>
+        
+        <aura:if isTrue ="{!v.isNormal}">
+            <aura:if isTrue ="{!and(v.isEditable,v.recordData.RecordType.Name == 'Normal')}">
+                <lightning:input class="slds-p-left_x-small" label = "Account Name" type="text" value="{!v.recordData.Name}"/>
+                <lightning:input class="slds-p-top_medium slds-p-left_x-small" label = "Account Number"  type="number" value="{!v.recordData.AccountNumber}"/>
+                <lightning:input class="slds-p-top_medium slds-p-left_x-small" label = "Account Site" type="text" value="{!v.recordData.Site}"/>
+                <div class="slds-align_absolute-center slds-p-top_medium">
+                    <lightning:button  label="Save" onclick="{!c.saveRecords}"/>
+                    <lightning:button  label="Cancel" onclick="{!c.Cancel}"/>
+                </div>
+                
+                <aura:set attribute="else">
+                    <P class="slds-p-left_x-small">  Name : {!v.recordData.Name}</P>
+                    <P class="slds-p-top_medium slds-p-left_x-small">  Site: {!v.recordData.Site}</P>
+                    <p class="slds-p-top_medium slds-p-left_x-small">  Acount Number : {!v.recordData.AccountNumber}</p>
+                    <p class="slds-p-top_medium slds-p-left_x-small">  RecordType Name : {!v.recordData.RecordType.Name}</p>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <aura:if isTrue ="{!v.isSpecial}">
+            <aura:if isTrue ="{!and(v.isEditable,v.recordData.RecordType.Name == 'Special')}">
+                <lightning:input class="slds-p-left_x-small"  label = "Account Name" type="text" value="{!v.recordData.Name}"/>
+                <lightning:input class="slds-p-top_medium slds-p-left_x-small" label = "Website"  type="text" value="{!v.recordData.Website}"/>
+                <lightning:input class="slds-p-top_medium slds-p-left_x-small" label = "Phone" type="number" value="{!v.recordData.Phone}"/>
+                <div class="slds-align_absolute-center slds-p-top_medium">
+                    <lightning:button class="slds-float_right" label="Save" onclick="{!c.saveRecords}"/>
+                    <lightning:button class="slds-float_right" label="Cancel" onclick="{!c.Cancel}"/>
+                </div>
+                <aura:set attribute="else">
+                    <p class="slds-p-left_x-small">  Name : {!v.recordData.Name}</p>
+                    <P class="slds-p-top_medium slds-p-left_x-small">  WebSite: {!v.recordData.Website}</P>
+                    <p class="slds-p-top_medium slds-p-left_x-small">  Phone : {!v.recordData.Phone}</p>
+                    <p class="slds-p-top_medium slds-p-left_x-small">  RecordType Name : {!v.recordData.RecordType.Name}</p>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+    </lightning:card>
+</aura:component>

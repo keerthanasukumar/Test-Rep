@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="TestApproval">
+	<aura:handler name="init" value="{!this}" action ="{! c.callApprovalProcess }" />
+    
+    <P><B>WELCOME TO VILLA</B></P>
+    
+    
+</aura:component>

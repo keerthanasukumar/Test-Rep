@@ -1,0 +1,13 @@
+<template>
+   <template if:true={selectedVilla}>
+    <P> Villa</P>    
+    <lightning-card>
+        <div>
+        <p> Villa Name : {selectedVilla.Name}</p>
+        <p>No of Rooms : {selectedVilla.No_Of_Rooms__c}</p>
+        <p>Max Accommodation:{selectedVilla.Max_Accommodation__c}</p>
+        <p>Cost Per Day : {selectedVilla.Cost_Per_Day__c}</p>
+    </div>
+    </lightning-card>
+    </template>
+</template>

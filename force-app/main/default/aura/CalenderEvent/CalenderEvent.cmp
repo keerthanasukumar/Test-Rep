@@ -1,0 +1,11 @@
+<aura:component controller ="CaseCalendarController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<ltng:require scripts="{!join(',', 
+                           $Resource.FullCalender + '/FullCalender/jquery.min.js', 
+                           $Resource.FullCalender + '/FullCalender/moment.min.js', 
+                           $Resource.FullCalender + '/FullCalender/fullcalendar.min.js')}"
+                  styles="{!$Resource.FullCalender + '/FullCalender/fullcalendar.min.css'}"
+                  
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <aura:attribute name="events" type="Object[]" />
+    <div id='calendar'></div>
+</aura:component>

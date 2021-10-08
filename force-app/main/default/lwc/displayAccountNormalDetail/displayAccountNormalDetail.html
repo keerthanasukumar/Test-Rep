@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <p>Welcome account</p>
+        <lightning-button label="Edit" title="Edit" onclick={editRecords} class={showEditBtn}></lightning-button>
+         <template if:true={acc}>
+            <div class={showParagraph}>
+                <p>{recordId}</p>
+                <p>Account Name: {acc.Name}</p>
+                <p>Account Number: {acc.AccountNumber}</p>
+                <p>Annual Revenue: {acc.AnnualRevenue}</p>
+                <p>Accout Site : {acc.Site}</p>
+                <p>Account Record Type : {type}</p>
+            </div>
+        </template>
+    </lightning-card>
+
+    <template if:true={isEditable}>
+        <lightning-card class={showEdit}  variant="base"  title="Account Details"></lightning:card>
+            <lightning-input name="accName" label="Name" value={acc.Name} onchange={changeHandler}></lightning-input>
+            <lightning-input name="accNo" label="Account Number" value={acc.AccountNumber} onchange={changeHandler}></lightning-input>
+            <lightning-input name="accRev" label="Annual Revenue" value={acc.AnnualRevenue} onchange={changeHandler}></lightning-input>
+            <lightning-input name ="accSite" label="Account Site" value={acc.Site} onchange={changeHandler}></lightning-input>
+            <lightning-button label="Save" title="Save" onclick={saveRecord} class="slds-m-left_x-small"></lightning-button> 
+            <lightning-button label="Cancel" title="cancel" onclick={Cancel} class="slds-m-left_x-small"></lightning-button>
+        </lightning-card>
+    </template>     
+ </template>
+</template>

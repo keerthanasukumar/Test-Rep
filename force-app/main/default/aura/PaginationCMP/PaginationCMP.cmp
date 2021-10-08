@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="currentPageNumber" type="Integer" required="true" default="" />
+    <aura:attribute name="maxPageNumber" type="Integer" required="true" default = ""/>
+    <div class="slds-align_absolute-center">
+    <div class="slds-button-group" role="group">
+       
+        <button onclick="{!c.prevPage}" class="slds-button slds-button--neutral">
+            Prev
+        </button>
+           
+        <button class="slds-button slds-button--neutral">
+            {!v.currentPageNumber} / {!v.maxPageNumber}
+        </button>
+        <button onclick="{!c.nextPage}" class="slds-button slds-button--neutral">
+            Next
+        </button>
+    	</div>
+    </div>
+</aura:component>

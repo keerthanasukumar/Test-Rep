@@ -1,0 +1,65 @@
+<aura:component controller="PaginationAccountController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="acctList" type="Account[]"/>
+    <aura:attribute name="displayRecords" type ="Integer" default ="5"/>
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    
+    <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Section Title</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content">
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>
+        </div>
+    </div>
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="Name">Name</div></strong>
+                </th>
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="AccountNumber">AccountNumber</div></strong>
+                </th>
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="Phone">Phone</div></strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.acctList}" var="acc"> 
+                <tr>
+                    <th scope="row" data-label="Name">
+                        <div class="slds-truncate" title="{!acc.Name}">{!acc.Name}</div>
+                    </th>
+                    <th scope="row" data-label="Phone">
+                        <div class="slds-truncate" title="{!acc.AccountNumber}">{!acc.AccountNumber}</div>
+                    </th>
+                    <th scope="row" data-label="Email">
+                        <div class="slds-truncate" title="{!acc.Phone}">{!acc.Phone}</div>
+                    </th>
+                </tr>
+            </aura:iteration> 
+        </tbody>
+    </table>
+    <div class="slds-clearfix">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-align_absolute-center">            
+                <lightning:button disabled="{!v.PageNumber == 1}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+            </div>
+            <p class="slds-page-header__title">{!v.RecordStart}-{!v.RecordEnd} of {!v.TotalRecords} | Page {!v.PageNumber} of {!v.TotalPages}</p>
+        </div>
+    </div>
+    
+    <div class="slds-align_absolute-center">
+        <p>show</p><lightning:select aura:id="select" name="Show" label="" onchange="{!c.getSelected}">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        </lightning:select>
+    </div>
+</aura:component>

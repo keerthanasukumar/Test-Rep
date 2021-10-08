@@ -1,0 +1,14 @@
+.slds-table {
+    border: 1px solid #9b724b;
+    background-color: #0000;
+}
+.tr
+{
+    background-color:#1798c1 !important;
+    color:white;
+}
+.td
+{
+  background-color:#f00;
+  color:white;
+}

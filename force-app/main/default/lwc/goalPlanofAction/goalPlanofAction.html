@@ -1,0 +1,13 @@
+<template>
+    <lightning-card>
+    <lightning-button variant="label-hddien" icon-name="utility:add" onclick={addPlqnofAction}></lightning-button>
+    <template for:each={planActionList} for:index="index" for:item="row">  
+        <tr key={row.Id}>
+        <th>
+            <lightning-input type="text" name="Plan_of_action__c" label="Plan of action" onchange={handleChance}></lightning-input>
+        </th>
+        </tr>
+    </template>
+    <lightning-button label="Save" icon-name="utility:save" onclick={saveAction}></lightning-button>
+</lightning-card>
+</template>

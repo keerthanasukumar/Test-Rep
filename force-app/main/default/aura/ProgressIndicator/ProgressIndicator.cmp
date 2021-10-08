@@ -1,0 +1,62 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="stage1" type= "boolean" default ="false"/>
+    <aura:attribute name="stage2" type= "boolean" default ="false"/>
+    <aura:attribute name="stage3" type= "boolean" default ="false"/>
+    <aura:attribute name="stage4" type= "boolean" default ="false"/>
+    <aura:attribute name="stage5" type= "boolean" default ="false"/>
+    
+    <lightning:progressIndicator currentStep="2" type="path" variant="base">
+        <lightning:progressStep  label="Contacted" value="1"  onclick = "{!c.stage1Action}"/>
+        <lightning:progressStep label="Open" value="2" onclick = "{!c.stage2Action}"/>
+        <lightning:progressStep label="Unqualified" value="3" onclick = "{!c.stage3Action}"/>
+        <lightning:progressStep label="Nurturing" value="4" onclick = "{!c.stage4Action}"/>
+        <lightning:progressStep label="Closed" value="5" onclick = "{!c.stage5Action}"/>
+    </lightning:progressIndicator>
+    
+    <aura:if isTrue="{!v.stage1}">
+        <P>Contacted</P>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.stage2}">
+        <P>Open</P>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.stage3}">
+        <P>Unqualified</P>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.stage4}">
+        <P>Nurturing</P>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.stage5}">
+        <P>Closed</P>
+    </aura:if>
+    
+    
+    <lightning:card class="slds-text-heading_small  slds-table_bordered" title="attribute1hdkjhsfjakljgklajiruihjkadksfkafkjlajkgnnvmnkjdlakjhjdnhfajknkjafkjafjuhqhjkndsanfmnmamvmvmndamjfnjdkafhjhjkanfmnm,nmda,nfma,nfm,anmanjkjkndjandnamaljiqhyuqwegygadfhuewukjfkajkkanvmbauqjadfjanj">
+        <div class="slds-border_top slds-border_right slds-border_bottom slds-border_left">
+            <div class="slds-p-left--medium slds-p-right--medium">
+                <ul class="slds-list--vertical slds-has-dividers--top-space">
+                    
+                    <li class="slds-list__item">                   
+                        klklklkjkk
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </lightning:card>
+    <div class="slds-card__header">
+        Slds Box
+        <div class="slds-box slds-card__body">
+            <p>This is a regular-sized box.</p>
+        </div>
+    </div>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            skdsasd
+        </div>
+    </article>
+    
+</aura:component>

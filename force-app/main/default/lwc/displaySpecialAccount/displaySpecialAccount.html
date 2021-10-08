@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <lightning-button label="Edit" title="Edit" onclick={editRecords} class="slds-float_right"></lightning-button>
+        <template if:true={acc}>
+            <div class="slds-m-around_medium">
+            <p>Account Name: {acc.Name}</p>
+            <p>Website: {acc.Website} </p>
+            <p>Phone: {acc.Phone}</p>
+            <p>Accout Site : {acc.Site}</p>
+         </div>
+        </template>
+    </lightning-card>
+
+    <template if:true={isEditable}>
+        <lightning-card  class="slds-text-heading_small slds-card_boundary"  variant="base"  title="Account Details">
+            <lightning-input name ="accName" label="Name" value={{acc.Name}} onchange={changeHandler}></lightning-input>
+            <lightning-input name ="website" label="Account webSite" value={acc.Website} onchange={changeHandler}></lightning-input>
+            <lightning-input name ="phone" label="phone" value={acc.Phone} onchange={changeHandler}></lightning-input>
+            <lightning-input  name="accSite" label="Account Site" value={acc.Site} onchange={changeHandler}></lightning-input>
+            <lightning-button label="Save" title="Save" onclick={saveRecord} class="slds-m-left_x-small"></lightning-button> 
+            <lightning-button label="Cancel" title="cancel" onclick={Cancel} class="slds-m-left_x-small"></lightning-button>
+        </lightning-card>
+    </template> 
+</template>

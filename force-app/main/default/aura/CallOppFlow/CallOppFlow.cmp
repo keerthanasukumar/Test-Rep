@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<lightning:button variant="brand" label="ADD" title="Add" onclick="{!c.init}"/>
+    <lightning:button variant="brand" label="CPS INTAKE REPORT" title="Cir" />
+   
+    <lightning:flow aura:id="flowData"/>
+</aura:component>

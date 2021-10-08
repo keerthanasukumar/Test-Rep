@@ -1,0 +1,8 @@
+<template>
+    <lightning-button label="Load Project" title="Load Project" onclick={handleLoadProject} variant="brand" class= "slds-var-p-around_x-small" ></lightning-button>
+
+    <template if:true={showToastMsg}> 
+        <c-toast-Msg-Lwc title={toastErrorTitle} message={toastErrorMsg} type={toastErrorType} mode={toastErrorMode} ontoastcustomevent={handleToastEvent}>
+        </c-toast-Msg-Lwc>
+    </template>
+</template>

@@ -1,0 +1,120 @@
+<template>
+    <lightning-card title="Search Available villas" class="slds-text-heading_small slds-card_boundary">
+        <lightning-input  class="slds-p-left_x-small" type="datetime" name="FromDate" label="FROM DATE" onchange={changeHandler}></lightning-input>
+        <lightning-input class="slds-p-top_medium slds-p-left_x-small" type="datetime" name="ToDate" label="TO DATE" onchange={changeHandler}></lightning-input> 
+        <lightning-button label="Search for Booking" title="Search" onclick={searchVilla} class="slds-m-left_x-small"></lightning-button> 
+        <div class="spinner">
+          <template if:true={loading}>
+               <lightning-spinner alternative-text="Loading"></lightning-spinner>
+          </template>
+      </div>
+        <!--lightning-card>
+        <template if:true={villasFillter}>
+            <lightning-datatable
+                key-field="Id"
+                data={villasFillter}
+                columns={columns}
+                onclick={getSelectedLink}
+        >   </lightning-datatable>
+        </template>
+    </lightning-card-->
+    <template if:true={villasFillter}>
+    
+    <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+        <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div  title="VillaName">VillaName</div>
+              </th>
+              <th class="" scope="col">
+                <div title="City">City</div>
+              </th>
+              <th class="" scope="col">
+                <div  title="NoofRooms">NoofRooms</div>
+              </th>
+              <th class="" scope="col">
+                <div title="MaxAccommodation">MaxAccommodation</div>
+              </th>
+              <th>
+                  <div title="CostPerDay">CostPerDay</div>
+              </th>
+            </tr>
+          </thead>
+         <tbody>
+            <template for:each={villasFillter} for:index="index" for:item="row">  
+                <tr key={row.Id}>
+                <td>
+                  <a  href={recordPageUrl} id={index} accesskey={index} class="slds-truncate" title={row.Name} onclick={openVilla} target="_blank"> {row.Name}</a>
+                  </td>
+                  <td data-label="city">
+                    <a id={index} accesskey={index} class="slds-truncate" title={row.city} onclick={getweather} target="_blank"> {row.city}</a>
+                  </td>
+                  <td data-label="NoofRooms">
+                    <div id={index} class="slds-truncate" title={row.noofroom}>{row.noofroom}</div>
+                  </td>
+                  <td data-label="MaxAccommodation">
+                    <div id={index} class="slds-truncate" title={row.Max_Accommodation__c}>{row.Max_Accommodation__c}</div>
+                  </td>
+                  <td data-label="CostPerDay">
+                    <div id={index} class="slds-truncate" title={row.Cost_Per_Day__c}>{row.Cost_Per_Day__c}</div>
+                  </td>
+                  <td>
+                    <div id={index} class="slds-truncate">
+                      <lightning-button label="Booking"  accesskey={index}  title="Booking" onclick={handleBooking}></lightning-button> 
+                    </div>
+                  </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
+<template if:true={showBookingModel}> 
+  <div class="eventModal" if:true={showBookingModel} style="position:absolute;">
+    <c-model-component header ={header}>
+      <span slot="modalClose">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeEventModal} title="Close">
+ 
+          <lightning-icon icon-name="utility:close" size="small" title="Close"></lightning-icon>
+        </button>
+    </span> 
+    <span slot="modalBody">
+      <lightning-input  class="slds-p-left_x-small" type="date" name="confrimdate" label="Confrim Date" onchange={handleChange}></lightning-input>
+      <lightning-input disabled class="slds-p-top_medium slds-p-left_x-small" type="datetime" name="FromDate" label="From Date"  value={fromDate}></lightning-input>
+      <lightning-input disabled class="slds-p-top_medium slds-p-left_x-small" type="datetime" name="ToDate" label="To Date" value={toDate}></lightning-input>
+      <lightning-record-edit-form object-api-name="Booking__c">
+        <lightning-input-field field-name='Contact__c' name="con" onchange={handleChange}></lightning-input-field>
+      </lightning-record-edit-form>
+      <lightning-input class="slds-p-top_medium slds-p-left_x-small" type="number" name="noofPeople" label="no of People"  onchange={handleChange}></lightning-input>
+      <lightning-input disabled class="slds-p-top_medium slds-p-left_x-small" type="text" name="Villa" label="villa" value={villaRecord.Name} onchange={handleChange}></lightning-input>  
+    </span>
+    <span slot="modalFooter">
+      <lightning-button label="save" title="save" onclick={handleSave} target="_blank"></lightning-button>
+      <lightning-button label="cancel" title="cancel" onclick={cancel}></lightning-button>
+    </span>
+    </c-model-component>
+  </div>
+</template>
+</lightning-card>
+<template if:true={showWeatherModel}>
+  <div class="eventModal" if:true={showWeatherModel} style="position:absolute;">
+    <c-model-component header ='Weather'>
+      <span slot="modalClose">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeEventModal} title="Close">
+ 
+          <lightning-icon icon-name="utility:close" size="small" title="Close"></lightning-icon>
+        </button>
+    </span> 
+    <span slot="modalBody">
+      <p> temp : {temp} </P>
+      <p> humidity : {humidity}</p>
+      <p> pressure : {pressure}</p>
+      <p> description : {description}</p>
+      <p>main : {main}</p>
+    </span>
+    <span slot="modalFooter">
+      <lightning-button label="Close" title="close" onclick={cancel}></lightning-button>
+    </span>
+    </c-model-component>
+  </div>
+</template>
+</template>

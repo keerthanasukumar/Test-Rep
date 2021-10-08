@@ -1,0 +1,9 @@
+.THIS .slds-card__header{
+        background-color: lightgrey;
+ }
+.THIS .slds-card__body{
+        background-color: white;
+}
+.THIS .slds-card__footer{
+        background-color: white ;
+}

@@ -1,0 +1,13 @@
+<aura:component  controller="TestRecordAcc" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	<!--aura:attribute name="recordId" type="Id" /-->
+    <aura:attribute name="cpsHistory" type="Boolean" default="false"/>
+    
+    <lightning:recordEditForm objectApiName="Account" onsubmit="{!c.onRecordSubmit}" onsuccess="{!c.onRecordSuccess}">
+    	<lightning:inputField fieldName="booking__c" />
+		<lightning:button variant="brand" label="Save" type="submit" />
+	</lightning:recordEditForm>
+
+    <!--ui:inputCheckbox aura:id="cpsHistory" label="CPS History Clearance" change="{!c.onCheck}"/-->
+    <lightning:input type="checkbox" label="CPS History Clearance" name="input1" onclick="{!c.handleChange}"/>
+    <!--lightning:button variant="brand" label="save" onclick="{!c.handleSave}"/-->            
+</aura:component>

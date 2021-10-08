@@ -1,0 +1,29 @@
+.tile {
+    width: 100%;
+    height: 220px;
+    padding: 1px !important;
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+  .selected {
+    border: 3px solid rgb(0, 95, 178);
+    border-radius: 5px;
+    background-color: lightgreen;
+  }
+  .tile-wrapper {
+    cursor: pointer;
+    padding: 5px;
+  }
+.content {
+    padding: 8px;
+    background-color:#ffffff ;
+    border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
+}
+/*.selected {
+    background-color: lightgreen;
+    border: 4px solid blue;
+}*/
+/*.card{
+    width : slds-large-size--6-of-12;
+}*/

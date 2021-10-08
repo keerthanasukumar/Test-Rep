@@ -1,0 +1,14 @@
+<template>
+    <template if:true={villa} class="slds-m-around_x-small">
+        <div onclick={handleVilla}>
+        <lightning-card>
+            <div  class="slds-box_x-small content" >
+                <p> Villa Name : {villa.Name}</p>
+                <p>No of Rooms : {villa.No_Of_Rooms__c}</p>
+                <p>Max Accommodation: {villa.Max_Accommodation__c}</p>
+                <p>Cost Per Day : {villa.Cost_Per_Day__c}</p>
+            </div>
+        </lightning-card>
+        </div>
+    </template>
+</template>

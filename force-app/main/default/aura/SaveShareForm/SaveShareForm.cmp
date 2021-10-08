@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="SaveShareRecordController">
+    
+    <aura:attribute name="ShareRec" type="Share__c"  default="{ 'sobjectType': 'Share__c',
+                                                           'Name': '',
+                                                           'Percentage__c':'100'
+                                                           }"/>
+    {!v.ShareRec}
+    <aura:attribute name="childCMP" type ="Aura.Component[]"/>
+    
+    
+    <!--table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <div class="row">
+            <tr>
+                <th scope="col">
+                    <lightning:input type="String" name="Name" label="Name" value="{!v.Share.Name}"/>
+                </th>
+                <th scope="col">
+                    <lightning:input type="number" name="Percentage" label="Percentage" value="{!v.Share.Percentage__c}"/>    
+                </th>
+            </tr-->
+            <div>
+                <tr>
+                    <th scope="col">
+                        <lightning:button label="Save" onclick="{!c.saveRecords}"/>
+                        <lightning:button label="Cancel" onclick="{!c.cancel}"/>
+                    </th>
+                </tr>
+            </div>
+        <!--/div-->
+    <!--/table-->
+</aura:component>

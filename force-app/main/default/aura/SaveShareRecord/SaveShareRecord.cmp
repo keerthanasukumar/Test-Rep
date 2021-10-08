@@ -1,0 +1,79 @@
+<aura:component controller="SaveShareRecordController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+    <aura:attribute name="Share" type="List"/>
+    <aura:attribute name="isShow" type="boolean" default="false"/>
+    <aura:attribute name="isRec" type="boolean" default="true"/>
+    <aura:attribute name="per" type="integer" default="0"/>
+    <aura:attribute name="recordId" type="String" default=""/>
+    <aura:attribute name="title" type="String" default=""/>
+    <aura:attribute name="shareList" type="Share__c[]"/>
+    
+    <aura:attribute name="fields" type="String[]" default="['Name','Percentage__c']" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
+        <lightning:card  class="slds-text-heading_small slds-card_boundary"  variant="base"  title="{!v.title}" iconName="action:new_note">
+            <aura:set attribute="actions">       
+                <lightning:button label="New" onclick="{!c.showForm}"/>
+            </aura:set>
+            <aura:if isTrue="{!v.isRec}">
+                <div class="slds-card__body">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <strong><div class="slds-truncate slds-border_bottom" title="Name">Name</div></strong>
+                                </th>
+                                <th scope="col">
+                                    <strong><div class="slds-truncate slds-border_bottom" title="Percentage">Percentage</div></strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody scope="row">
+                            <aura:iteration items="{!v.Share}" var="fileShare" indexVar="ivar">
+                                <tr>
+                                    <td role="gridcell">
+                                        <div class="slds-truncate">{!fileShare.Name}</div>
+                                    </td>
+                                    <td title="perc" role="gridcell">
+                                        <div class="slds-truncate">{!fileShare.Percentage__c}</div>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>  
+                </div>
+            </aura:if>
+            <aura:if isTrue="{!v.isShow}">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Name">Name</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Percentage">Percentage</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.Share}" var="fileShare" indexVar="ivar">
+                            <tr>
+                                <td title="name">
+                                    <div class="slds-truncate"><lightning:input aura:id="nameInput" type="text" value="{!fileShare.Name}"/></div>
+                                </td>
+                                <td title="perc">
+                                    <div class="slds-truncate"><lightning:input aura:id="perctInput" type="number" value="{!fileShare.Percentage__c}"/></div>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>  
+                <footer class="slds-card__footer">
+                    <lightning:button label="Save" onclick="{!c.saveRecords}"/>
+                    <lightning:button label="Cancel" onclick="{!c.cancel}"/>
+                    <lightning:button label="Show" onclick="{!c.viewPicklist}"/>
+                </footer>
+            </aura:if>
+        </lightning:card>
+</aura:component>
